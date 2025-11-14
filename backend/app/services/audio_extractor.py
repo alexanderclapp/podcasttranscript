@@ -40,6 +40,15 @@ def extract_audio_from_podcast(url: str) -> Tuple[str, dict]:
         }],
         'quiet': False,
         'no_warnings': False,
+        'extract_flat': False,
+        'ignoreerrors': False,
+        'no_check_certificate': True,
+        # Apple Podcasts specific options
+        'extractor_args': {
+            'podcasts': {
+                'format': 'best',
+            }
+        }
     }
     
     metadata = {}
