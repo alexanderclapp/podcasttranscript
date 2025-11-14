@@ -36,7 +36,7 @@ def extract_audio_from_podcast(url: str) -> Tuple[str, dict]:
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
-            'preferredquality': '192',
+            'preferredquality': '128',  # Lower quality to reduce file size (under 25MB limit)
         }],
         'quiet': False,
         'no_warnings': False,
