@@ -32,30 +32,65 @@ def summarize_transcript(transcript: str, api_key: Optional[str] = None) -> str:
         "X-Title": "Podcast Transcription App"  # Optional
     }
     
-    # Prepare prompt for summarization
-    prompt = f"""Please provide a comprehensive summary of the following podcast transcript. 
-Focus on the main topics, key insights, and important points discussed. 
-Keep the summary concise but informative (approximately 3-5 paragraphs).
-
-Transcript:
-{transcript}
-
-Summary:"""
-    
     # Handle long transcripts by truncating if needed (OpenRouter has token limits)
     # Most models can handle ~4000 tokens in context, so we'll limit transcript to ~8000 chars
     max_transcript_length = 8000
+    truncated = False
     if len(transcript) > max_transcript_length:
         logger.warning(f"Transcript is very long ({len(transcript)} chars), truncating for summary")
         transcript = transcript[:max_transcript_length] + "... [truncated]"
-        prompt = f"""Please provide a comprehensive summary of the following podcast transcript (note: transcript has been truncated).
-Focus on the main topics, key insights, and important points discussed. 
-Keep the summary concise but informative (approximately 3-5 paragraphs).
+        truncated = True
+    
+    # Prepare expert-level prompt for summarization
+    transcript_note = " (note: transcript has been truncated)" if truncated else ""
+    
+    prompt = f"""**Situation**
 
-Transcript:
+You are an expert analyst and communicator specializing in distilling complex audio content into clear, actionable insights. You have deep expertise across multiple industries and domains, allowing you to understand nuanced discussions and identify what truly matters to professionals in each field.
+
+**Task**
+
+The assistant should analyze the provided podcast transcript{transcript_note} and create a comprehensive summary that can be read in 3-5 minutes. The summary must capture the key insights, main arguments, notable quotes, and actionable takeaways as if written by a subject matter expert in that specific industry or domain.
+
+**Objective**
+
+Provide busy professionals with an expert-level distillation of podcast content that saves time while preserving the most valuable insights and context from the original discussion.
+
+**Knowledge**
+
+The assistant should:
+
+1. Identify the podcast's primary industry, domain, or area of expertise and adopt the perspective of a recognized expert in that field
+
+2. Extract and prioritize the most significant insights, arguments, and conclusions that would matter to professionals in that domain
+
+3. Include 2-3 direct quotes that capture pivotal moments or key ideas from the discussion
+
+4. Highlight any actionable takeaways, frameworks, or practical applications mentioned
+
+5. Maintain the expert tone and terminology appropriate to the subject matter while ensuring clarity
+
+**Output Structure**
+
+The summary must include:
+
+- **Overview** (2-3 sentences): Context about the podcast, guests, and main topic
+
+- **Key Insights** (3-5 bullet points): The most important ideas and arguments presented
+
+- **Notable Quotes** (2-3 quotes): Impactful statements that capture essential points
+
+- **Actionable Takeaways** (2-4 bullet points): Practical applications or recommendations discussed
+
+- **Expert Perspective** (1-2 sentences): A brief analytical commentary on the significance or implications of the discussion
+
+The total length should be optimized for a 3-5 minute reading time (approximately 450-750 words).
+
+**Transcript:**
+
 {transcript}
 
-Summary:"""
+**Summary:**"""
     
     payload = {
         "model": "openai/gpt-3.5-turbo",
@@ -66,7 +101,7 @@ Summary:"""
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 1000
+        "max_tokens": 1500  # Increased for more detailed structured summaries (450-750 words)
     }
     
     try:
