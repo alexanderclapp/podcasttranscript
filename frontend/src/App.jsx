@@ -33,11 +33,20 @@ function App() {
       setResults(response.data)
       setLoading(false)
     } catch (err) {
-      setError(
-        err.response?.data?.detail || 
-        err.message || 
-        'An error occurred while processing the podcast'
-      )
+      let errorMessage = 'An error occurred while processing the podcast'
+      
+      if (err.response) {
+        // Server responded with error
+        errorMessage = err.response.data?.detail || err.response.data?.message || `Server error: ${err.response.status}`
+      } else if (err.request) {
+        // Request made but no response received
+        errorMessage = `Network error: Unable to connect to the server. Please check if the backend is running.`
+      } else {
+        // Error setting up request
+        errorMessage = err.message || errorMessage
+      }
+      
+      setError(errorMessage)
       setLoading(false)
     }
   }
