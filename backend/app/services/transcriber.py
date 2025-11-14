@@ -22,6 +22,7 @@ def transcribe_audio(audio_file_path: str, api_key: Optional[str] = None) -> str
     if not api_key:
         raise ValueError("OpenAI API key is required")
     
+    # Initialize OpenAI client
     client = OpenAI(api_key=api_key)
     
     try:
