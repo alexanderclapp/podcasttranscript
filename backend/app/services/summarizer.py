@@ -50,7 +50,7 @@ You are an expert analyst and communicator specializing in distilling complex au
 
 **Task**
 
-The assistant should analyze the provided podcast transcript{transcript_note} and create a comprehensive summary that can be read in 3-5 minutes. The summary must capture the key insights, main arguments, notable quotes, and actionable takeaways as if written by a subject matter expert in that specific industry or domain.
+The assistant should analyze the provided podcast transcript{transcript_note} and create a comprehensive summary that can be read in approximately 10 minutes. The summary must capture the key insights, main arguments, notable quotes, and actionable takeaways as if written by a subject matter expert in that specific industry or domain.
 
 **Objective**
 
@@ -74,17 +74,19 @@ The assistant should:
 
 The summary must include:
 
-- **Overview** (2-3 sentences): Context about the podcast, guests, and main topic
+- **Overview** (4-6 sentences): Comprehensive context about the podcast, guests, and main topic
 
-- **Key Insights** (3-5 bullet points): The most important ideas and arguments presented
+- **Key Insights** (6-10 bullet points): The most important ideas and arguments presented with detailed explanations
 
-- **Notable Quotes** (2-3 quotes): Impactful statements that capture essential points
+- **Notable Quotes** (4-6 quotes): Impactful statements that capture essential points with context
 
-- **Actionable Takeaways** (2-4 bullet points): Practical applications or recommendations discussed
+- **Actionable Takeaways** (4-8 bullet points): Practical applications or recommendations discussed with implementation details
 
-- **Expert Perspective** (1-2 sentences): A brief analytical commentary on the significance or implications of the discussion
+- **Expert Perspective** (2-4 sentences): In-depth analytical commentary on the significance or implications of the discussion
 
-The total length should be optimized for a 3-5 minute reading time (approximately 450-750 words).
+- **Additional Context** (2-3 paragraphs): Further background information, related concepts, or industry implications that provide deeper understanding
+
+The total length should be optimized for a 10 minute reading time (approximately 900-1500 words).
 
 **Transcript:**
 
@@ -101,7 +103,7 @@ The total length should be optimized for a 3-5 minute reading time (approximatel
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 1500  # Increased for more detailed structured summaries (450-750 words)
+        "max_tokens": 3000  # Increased for longer, more detailed summaries (900-1500 words, ~10 min read)
     }
     
     try:
