@@ -61,27 +61,26 @@ Prefer facts, actionable insights, frameworks, and takeaways over storytelling.
 
 **OUTPUT FORMAT**
 
-Title: "X – Key Points from the Conversation"
+Title: "X – key points from the episode" (use lowercase "key points" and "episode")
 
-Short executive snapshot: 5–8 bullets capturing the most important themes.
+Short executive snapshot: 5–8 bullets capturing the most important themes. Start directly with bullet points, no introductory text.
 
-Sectioned summary, usually (adapt where needed):
+Sectioned summary using markdown headings (## and ###). Create clear, logical sections such as:
 
-- Who the guest is / background
+- **Background / Who is [person]?** - Personal and professional background
+- **[Company/Project] – model & capital** - Business structure, funding, investors
+- **Acquisitions & sector focus** - Specific deals, sectors, and strategic pivots
+- **Market structure & thesis** - Market analysis, competition, positioning
+- **[Sector] economics** - Business model breakdown, revenue streams, margins
+- **Integration, management, and seller roles** - Post-acquisition dynamics
+- **Deal sourcing** - How deals are found and closed
+- **Labor market & HR challenges** - Workforce considerations
+- **Geographic scope** - Current and future markets
+- **Challenges & opportunities** - Key risks and growth areas
+- **Future direction or open questions** - What's next
+- **Closing & contact** - How to reach them (if mentioned)
 
-- Their company / project / work
-
-- Key topics discussed
-
-- Frameworks, lessons, or principles
-
-- Data + numbers (revenue, years, metrics, costs, etc.)
-
-- Challenges & opportunities
-
-- Future direction or open questions
-
-Final section: "Why this conversation matters" or "Key takeaways"
+Adapt sections as needed based on the conversation content. Use nested bullet points (sub-bullets with proper indentation) to show hierarchy and detail.
 
 **RULES**
 

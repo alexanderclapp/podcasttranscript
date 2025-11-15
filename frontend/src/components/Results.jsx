@@ -98,16 +98,65 @@ function Results({ transcript, summary, summaryType2, metadata, onReset }) {
             <h3 className="text-xl font-semibold text-green-900 mb-4">Structured Summary</h3>
             <div className="prose max-w-none text-gray-700 whitespace-pre-wrap markdown-content">
               {summaryType2.split('\n').map((line, i) => {
-                if (line.startsWith('###')) {
-                  return <h3 key={i} className="text-lg font-bold mt-6 mb-3 text-gray-900">{line.replace('###', '').trim()}</h3>
-                } else if (line.startsWith('##')) {
-                  return <h2 key={i} className="text-xl font-bold mt-8 mb-4 text-gray-900">{line.replace('##', '').trim()}</h2>
-                } else if (line.startsWith('-') || line.startsWith('*')) {
-                  return <li key={i} className="ml-4 mb-2">{line.replace(/^[-*]\s*/, '')}</li>
-                } else if (line.trim() === '') {
+                const trimmedLine = line.trim()
+                
+                // Main title (first line or line starting with ## but no ###)
+                if (i === 0 || (trimmedLine.startsWith('##') && !trimmedLine.startsWith('###'))) {
+                  const titleText = trimmedLine.replace(/^##+\s*/, '').trim()
+                  if (titleText) {
+                    return <h2 key={i} className="text-2xl font-bold mt-0 mb-6 text-gray-900">{titleText}</h2>
+                  }
+                }
+                // Sub-headings (###)
+                else if (trimmedLine.startsWith('###')) {
+                  return <h3 key={i} className="text-lg font-bold mt-8 mb-4 text-gray-900">{trimmedLine.replace('###', '').trim()}</h3>
+                }
+                // Main headings (##)
+                else if (trimmedLine.startsWith('##')) {
+                  return <h2 key={i} className="text-xl font-bold mt-8 mb-4 text-gray-900">{trimmedLine.replace('##', '').trim()}</h2>
+                }
+                // Bullet points - handle nesting
+                else if (trimmedLine.startsWith('-') || trimmedLine.startsWith('*')) {
+                  const indent = line.match(/^\s*/)[0].length
+                  const bulletText = trimmedLine.replace(/^[-*]\s*/, '')
+                  const isSubBullet = indent >= 2 || (trimmedLine.startsWith('  ') || trimmedLine.startsWith('   '))
+                  
+                  if (isSubBullet || indent >= 2) {
+                    return (
+                      <li key={i} className="ml-8 mb-1.5 text-gray-700 list-disc">
+                        <span className="ml-2">{bulletText}</span>
+                      </li>
+                    )
+                  } else {
+                    return (
+                      <li key={i} className="ml-4 mb-2 text-gray-800 list-disc font-medium">
+                        {bulletText}
+                      </li>
+                    )
+                  }
+                }
+                // Bold text (text wrapped in **)
+                else if (trimmedLine.includes('**')) {
+                  const parts = trimmedLine.split(/(\*\*[^*]+\*\*)/g)
+                  return (
+                    <p key={i} className="mb-3">
+                      {parts.map((part, j) => 
+                        part.startsWith('**') && part.endsWith('**') ? (
+                          <strong key={j} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>
+                        ) : (
+                          <span key={j}>{part}</span>
+                        )
+                      )}
+                    </p>
+                  )
+                }
+                // Empty lines
+                else if (trimmedLine === '') {
                   return <br key={i} />
-                } else {
-                  return <p key={i} className="mb-3">{line}</p>
+                }
+                // Regular paragraphs
+                else {
+                  return <p key={i} className="mb-3 text-gray-700">{trimmedLine}</p>
                 }
               })}
             </div>
