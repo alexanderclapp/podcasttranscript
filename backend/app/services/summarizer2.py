@@ -33,9 +33,24 @@ def summarize_transcript_type2(transcript: str, api_key: Optional[str] = None) -
         "X-Title": "Podcast Transcription App"
     }
     
-    # Handle long transcripts by truncating if needed
-    max_transcript_length = 8000
+    # Calculate target summary length
+    # Target: ~3000 words, or 1/4 of transcript length if transcript is shorter than 3000 words
+    transcript_word_count = len(transcript.split())
+    
+    if transcript_word_count < 3000:
+        target_words = max(transcript_word_count // 4, 200)  # At least 200 words
+        target_note = f"approximately {target_words} words (1/4 of transcript length)"
+    else:
+        target_words = 3000
+        target_note = "approximately 3000 words"
+    
+    logger.info(f"Transcript word count: {transcript_word_count}, Target summary: {target_words} words")
+    
+    # Handle long transcripts by truncating if needed (keep more for longer summaries)
+    # For 3000 word summaries, we need more context
+    max_transcript_length = 12000  # Increased to allow for longer summaries
     truncated = False
+    original_transcript = transcript
     if len(transcript) > max_transcript_length:
         logger.warning(f"Transcript is very long ({len(transcript)} chars), truncating for summary")
         transcript = transcript[:max_transcript_length] + "... [truncated]"
@@ -80,7 +95,15 @@ Sectioned summary using markdown headings (## and ###). Create clear, logical se
 - **Future direction or open questions** - What's next with detailed bullets on plans, timelines, priorities.
 - **Closing & contact** - How to reach them (if mentioned) with contact details and preferences.
 
-**IMPORTANT**: Each section should be SUBSTANTIAL with 5-15+ bullet points (often with nested sub-bullets). Don't be brief - extract all relevant details, numbers, frameworks, and insights from the conversation. Think of each section as a comprehensive mini-essay in bullet format. Use nested bullet points (sub-bullets with proper indentation) extensively to show hierarchy and detail. Include specific numbers, dates, percentages, and concrete examples wherever mentioned.
+**IMPORTANT**: 
+
+- Target length: {target_note}
+- Each section should be SUBSTANTIAL with 5-15+ bullet points (often with nested sub-bullets)
+- Don't be brief - extract all relevant details, numbers, frameworks, and insights from the conversation
+- Think of each section as a comprehensive mini-essay in bullet format
+- Use nested bullet points (sub-bullets with proper indentation) extensively to show hierarchy and detail
+- Include specific numbers, dates, percentages, and concrete examples wherever mentioned
+- The summary should be comprehensive and detailed, reaching the target word count through thorough coverage of all topics
 
 **RULES**
 
@@ -109,7 +132,7 @@ Ignore podcast housekeeping ("follow us on Apple", etc.) unless relevant.
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 4000  # Increased for longer, more detailed sections (comprehensive bullet-point summaries)
+        "max_tokens": 4500  # Increased for 3000-word summaries (roughly 4000-4500 tokens for 3000 words)
     }
     
     try:
