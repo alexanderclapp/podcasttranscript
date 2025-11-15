@@ -67,20 +67,20 @@ Short executive snapshot: 5–8 bullets capturing the most important themes. Sta
 
 Sectioned summary using markdown headings (## and ###). Create clear, logical sections such as:
 
-- **Background / Who is [person]?** - Personal and professional background
-- **[Company/Project] – model & capital** - Business structure, funding, investors
-- **Acquisitions & sector focus** - Specific deals, sectors, and strategic pivots
-- **Market structure & thesis** - Market analysis, competition, positioning
-- **[Sector] economics** - Business model breakdown, revenue streams, margins
-- **Integration, management, and seller roles** - Post-acquisition dynamics
-- **Deal sourcing** - How deals are found and closed
-- **Labor market & HR challenges** - Workforce considerations
-- **Geographic scope** - Current and future markets
-- **Challenges & opportunities** - Key risks and growth areas
-- **Future direction or open questions** - What's next
-- **Closing & contact** - How to reach them (if mentioned)
+- **Background / Who is [person]?** - Personal and professional background with multiple bullet points covering education, career path, previous roles, and key experiences. Use nested sub-bullets for details.
+- **[Company/Project] – model & capital** - Business structure, funding, investors. Include detailed subsections like "Initial model" and "Now" with multiple bullets each. Cover investor types, capital structure, economics.
+- **Acquisitions & sector focus** - Specific deals with detailed breakdowns. For each acquisition, include multiple bullets covering what it was, why it mattered, how it fits the strategy. Include subsections for different deals.
+- **Market structure & thesis** - Comprehensive market analysis with multiple bullets on competition, positioning, market size, fragmentation. Include specific numbers and metrics.
+- **[Sector] economics** - Detailed business model breakdown with subsections (e.g., "construction vs maintenance"). Multiple bullets per subsection covering revenue streams, margins, profitability, unit economics.
+- **Integration, management, and seller roles** - In-depth post-acquisition dynamics. Multiple bullets covering seller retention strategies, management structure, cultural integration challenges, new management hires.
+- **Deal sourcing** - Comprehensive coverage of how deals are found. Include subsections for different methods (proprietary, intermediated, etc.). Multiple bullets per method with specifics.
+- **Labor market & HR challenges** - Detailed workforce considerations. Multiple bullets on talent scarcity, training programs, hiring strategies, skill requirements.
+- **Geographic scope** - Current and future markets with multiple bullets on current presence, expansion plans, regional strategies, target markets.
+- **Challenges & opportunities** - Substantial section with multiple bullets on key risks, growth areas, strategic considerations.
+- **Future direction or open questions** - What's next with detailed bullets on plans, timelines, priorities.
+- **Closing & contact** - How to reach them (if mentioned) with contact details and preferences.
 
-Adapt sections as needed based on the conversation content. Use nested bullet points (sub-bullets with proper indentation) to show hierarchy and detail.
+**IMPORTANT**: Each section should be SUBSTANTIAL with 5-15+ bullet points (often with nested sub-bullets). Don't be brief - extract all relevant details, numbers, frameworks, and insights from the conversation. Think of each section as a comprehensive mini-essay in bullet format. Use nested bullet points (sub-bullets with proper indentation) extensively to show hierarchy and detail. Include specific numbers, dates, percentages, and concrete examples wherever mentioned.
 
 **RULES**
 
@@ -109,7 +109,7 @@ Ignore podcast housekeeping ("follow us on Apple", etc.) unless relevant.
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 2000  # Structured summaries with sections
+        "max_tokens": 4000  # Increased for longer, more detailed sections (comprehensive bullet-point summaries)
     }
     
     try:
