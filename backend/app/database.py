@@ -7,10 +7,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Use persistent volume path if available (Fly.io), otherwise use local path
+# For now, using /tmp which persists with machine lifecycle
+# TODO: Attach volumes properly for long-term persistence
 if os.path.exists('/data'):
     DB_PATH = '/data/podcast_summaries.db'
 else:
-    DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'podcast_summaries.db')
+    # Use /tmp on Fly.io for persistence across restarts (within same machine)
+    DB_PATH = '/tmp/podcast_summaries.db'
 
 
 def init_db():

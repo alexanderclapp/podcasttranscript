@@ -50,7 +50,8 @@ primary_region = "iad"
   cpus = 1
   memory_mb = 512
 
-[[mounts]]
-  source = "data"
-  destination = "/data"
+# Note: Volumes need to be attached manually for now
+# [[mounts]]
+#   source = "data"
+#   destination = "/data"
 
