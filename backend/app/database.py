@@ -6,7 +6,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'podcast_summaries.db')
+# Use persistent volume path if available (Fly.io), otherwise use local path
+if os.path.exists('/data'):
+    DB_PATH = '/data/podcast_summaries.db'
+else:
+    DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'podcast_summaries.db')
 
 
 def init_db():
