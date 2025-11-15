@@ -49,7 +49,9 @@ async def root():
         "message": "Podcast Transcription API",
         "status": "running",
         "endpoints": {
-            "process_podcast": "/api/process-podcast"
+            "process_podcast": "/api/process-podcast",
+            "get_summaries": "/api/summaries",
+            "get_summary": "/api/summaries/{id}"
         }
     }
 
