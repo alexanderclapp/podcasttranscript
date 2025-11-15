@@ -72,19 +72,7 @@ The assistant should:
 
 **Output Structure**
 
-The summary must include:
-
-- **Overview** (4-6 sentences): Comprehensive context about the podcast, guests, and main topic
-
-- **Key Insights** (6-10 bullet points): The most important ideas and arguments presented with detailed explanations
-
-- **Notable Quotes** (4-6 quotes): Impactful statements that capture essential points with context
-
-- **Actionable Takeaways** (4-8 bullet points): Practical applications or recommendations discussed with implementation details
-
-- **Expert Perspective** (2-4 sentences): In-depth analytical commentary on the significance or implications of the discussion
-
-- **Additional Context** (2-3 paragraphs): Further background information, related concepts, or industry implications that provide deeper understanding
+Create a comprehensive, well-structured summary that flows naturally and covers all important aspects of the conversation. The summary should be organized in a logical way that makes sense for the specific content discussed.
 
 The total length should be optimized for a 10 minute reading time (approximately 900-1500 words).
 

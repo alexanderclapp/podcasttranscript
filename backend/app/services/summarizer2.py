@@ -85,20 +85,7 @@ Title: "X – key points from the episode" (use lowercase "key points" and "epis
 
 Short executive snapshot: 5–8 bullets capturing the most important themes. Start directly with bullet points, no introductory text.
 
-Sectioned summary using markdown headings (## and ###). Create clear, logical sections such as:
-
-- **Background / Who is [person]?** - Personal and professional background with multiple bullet points covering education, career path, previous roles, and key experiences. Use nested sub-bullets for details.
-- **[Company/Project] – model & capital** - Business structure, funding, investors. Include detailed subsections like "Initial model" and "Now" with multiple bullets each. Cover investor types, capital structure, economics.
-- **Acquisitions & sector focus** - Specific deals with detailed breakdowns. For each acquisition, include multiple bullets covering what it was, why it mattered, how it fits the strategy. Include subsections for different deals.
-- **Market structure & thesis** - Comprehensive market analysis with multiple bullets on competition, positioning, market size, fragmentation. Include specific numbers and metrics.
-- **[Sector] economics** - Detailed business model breakdown with subsections (e.g., "construction vs maintenance"). Multiple bullets per subsection covering revenue streams, margins, profitability, unit economics.
-- **Integration, management, and seller roles** - In-depth post-acquisition dynamics. Multiple bullets covering seller retention strategies, management structure, cultural integration challenges, new management hires.
-- **Deal sourcing** - Comprehensive coverage of how deals are found. Include subsections for different methods (proprietary, intermediated, etc.). Multiple bullets per method with specifics.
-- **Labor market & HR challenges** - Detailed workforce considerations. Multiple bullets on talent scarcity, training programs, hiring strategies, skill requirements.
-- **Geographic scope** - Current and future markets with multiple bullets on current presence, expansion plans, regional strategies, target markets.
-- **Challenges & opportunities** - Substantial section with multiple bullets on key risks, growth areas, strategic considerations.
-- **Future direction or open questions** - What's next with detailed bullets on plans, timelines, priorities.
-- **Closing & contact** - How to reach them (if mentioned) with contact details and preferences.
+Sectioned summary using markdown headings (## and ###). Create clear, logical sections that make sense for this specific podcast. Organize the content into meaningful sections based on what was actually discussed, using appropriate headings and subsections as needed.
 
 **IMPORTANT**: 
 
