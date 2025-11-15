@@ -44,7 +44,12 @@ def summarize_transcript_type2(transcript: str, api_key: Optional[str] = None) -
         target_words = 3000
         target_note = "approximately 3000 words"
     
-    logger.info(f"Transcript word count: {transcript_word_count}, Target summary: {target_words} words")
+    # Calculate min and max tokens (roughly 1 token ≈ 0.75 words, so ~1.33 tokens per word)
+    # Using conservative estimate: words * 1.25 for min, words * 1.5 for max
+    min_tokens = max(int(target_words * 1.1), 250)  # At least 250 tokens (roughly 200 words)
+    max_tokens = int(target_words * 1.5)  # Allow some buffer above target
+    
+    logger.info(f"Transcript word count: {transcript_word_count}, Target summary: {target_words} words, Tokens: min={min_tokens}, max={max_tokens}")
     
     # Handle long transcripts by truncating if needed (keep more for longer summaries)
     # For 3000 word summaries, we need more context
@@ -132,7 +137,8 @@ Ignore podcast housekeeping ("follow us on Apple", etc.) unless relevant.
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 4500  # Increased for 3000-word summaries (roughly 4000-4500 tokens for 3000 words)
+        "min_tokens": min_tokens,  # Minimum tokens based on target length
+        "max_tokens": max_tokens  # Maximum tokens based on target length (with buffer)
     }
     
     try:
