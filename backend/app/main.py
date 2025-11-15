@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
+from app.database import init_db
 import logging
 from dotenv import load_dotenv
 import os
@@ -13,6 +14,9 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
+
+# Initialize database
+init_db()
 
 app = FastAPI(
     title="Podcast Transcription API",

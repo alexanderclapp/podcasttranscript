@@ -40,3 +40,8 @@ frontend/.vite/
 *.wav
 *.m4a
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
